@@ -1,0 +1,20 @@
+<odoo>
+	<data>
+
+		<record id="gic_holiday_view_tree" model="ir.ui.view">
+		    <field name="name">Feriados</field>
+		    <field name="model">gic.holiday</field>
+		    <field name="arch" type="xml">
+				<tree string="Lista">
+					<field name="date" />
+				</tree>
+		    </field>
+		</record>
+
+	    <record id="gic_holiday_action" model="ir.actions.act_window">
+	        <field name="name">Registro de Feriados</field>
+	        <field name="res_model">gic.holiday</field>
+	        <field name="view_mode">tree,form</field>
+	    </record>
+	</data>
+</odoo>

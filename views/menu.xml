@@ -1,0 +1,26 @@
+<odoo>
+    <menuitem id="estate_menu_root" name="Gic" sequence="0">
+        <menuitem id="gic_master_data_menu" name="Principal">
+            <menuitem
+                id="gic_way_menu_action"
+                action="gic_way_action"
+            />
+            <menuitem
+                id="gic_deduction_menu_action"
+                action="gic_deduction_action"
+            />
+            <menuitem
+                id="gic_holiday_menu_action"
+                action="gic_holiday_action"
+            />
+            <menuitem
+                id="gic_payment_plan_menu_action"
+                action="gic_payment_plan_action"
+            />
+            <menuitem
+                id="gic_payment_menu_action"
+                action="gic_payment_action"
+            />
+        </menuitem>
+    </menuitem>
+</odoo>

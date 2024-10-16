@@ -1,0 +1,36 @@
+<odoo>
+	<data>
+        <!--
+		<record id="estate_property_view_search" model="ir.ui.view">
+		    <field name="name">Estate Property Search</field>
+		    <field name="model">estate.property</field>
+		    <field name="arch" type="xml">
+				<search string="Tests">
+					<filter name="Postal Code Is Set" domain="[('postcode', '&gt;', 0)]"/>
+
+				    <field name="name"/>
+				    <field name="postcode"/>
+				</search>
+		    </field>
+		</record>
+		-->
+		<record id="gic_payment_plan_view_tree" model="ir.ui.view">
+		    <field name="name">Planes de Cobro</field>
+		    <field name="model">gic.payment.plan</field>
+		    <field name="arch" type="xml">
+				<tree string="Lista">
+					<field name="name" />
+					<field name="settlement_period" />
+                    <field name="deduction_ids" />
+				</tree>
+		    </field>
+		</record>
+
+
+	    <record id="gic_payment_plan_action" model="ir.actions.act_window">
+	        <field name="name">Planes de Cobro</field>
+	        <field name="res_model">gic.payment.plan</field>
+	        <field name="view_mode">tree,form,kanban</field>
+	    </record>
+	</data>
+</odoo>

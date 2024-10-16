@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gic_deduction,access_gic_deduction,model_gic_deduction,base.group_user,1,1,1,1
+access_gic_way,access_gic_way,model_gic_way,base.group_user,1,1,1,1
+access_gic_holiday,access_gic_holiday,model_gic_holiday,base.group_user,1,1,1,1
+access_gic_payment_plan,access_gic_payment_plan,model_gic_payment_plan,base.group_user,1,1,1,1
+access_gic_payment,access_gic_payment,model_gic_payment,base.group_user,1,1,1,1
+

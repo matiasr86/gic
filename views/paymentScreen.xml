@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="Custom_Payment_Screen_Assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script src="/gic/static/src/js/custom_payment_screen.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>
