@@ -18,9 +18,10 @@ class GicPosPayment(models.Model):
         default="new",
     )
 
-    submission_date = fields.Datetime(string='Fecha de Presentación', compute='_compute_submission_date', store=True)
-    settlement_date = fields.Datetime(string='Fecha de Acreditación', compute='_compute_settlement_date', store=True)
-
+    submission_date = fields.Date(string='Fecha de Presentación', compute='_compute_submission_date', store=True)
+    settlement_date = fields.Date(string='Fecha de Acreditación', compute='_compute_settlement_date', store=True)
+    payment_plan_id = fields.Many2one('gic.payment.plan', string='Plan de Pago')
+    payment_plan = fields.Many2one(related='payment_method_id.payment_plan_id', string='Plan de Pago', store=False)
 
     @api.depends('create_date', 'submission_date', 'settlement_date')
     def _compute_state(self):
@@ -56,17 +57,13 @@ class GicPosPayment(models.Model):
                     record.submission_date = order_date
                 else:
                     manual_finish_lot = payment_method.way_id.manual_finish_lot
-
-                    if manual_finish_lot:
-                        record.submission_date = order_date
-                    else:
+                    if not manual_finish_lot:
                         if order_date.hour < 17:
-                            presentation_date = order_date
+                            record.submission_date = order_date
                         else:
                             presentation_date = order_date + timedelta(days=1)
-
-                        presentation_date = self._get_next_business_day(presentation_date)
-                        record.submission_date = presentation_date
+                            presentation_date = self._get_next_business_day(presentation_date)
+                            record.submission_date = presentation_date
 
     def _get_next_business_day(self, date):
         holidays = self.env['gic.holiday'].search([]).mapped('date')

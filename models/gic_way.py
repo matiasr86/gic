@@ -18,3 +18,4 @@ class GicWay(models.Model):
         copy=False,
         default="active",
     )
+    next_number = fields.Integer(string='Próximo Nro')
