@@ -33,20 +33,14 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/assets.xml',
         'views/gic_way.xml',
         'views/gic_deduction.xml',
-        'views/gic_payment.xml',
+        'views/gic_pos_payment.xml',
         'views/gic_payment_plan.xml',
         'views/gic_payment_method.xml',
         'views/gic_holiday.xml',
         'views/menu.xml',
     ],
-    'assets': {
-        'point_of_sale.assets': [
-            'gic/static/src/js/custom_payment_screen.js',
-        ],
-    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

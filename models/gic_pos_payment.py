@@ -1,19 +1,9 @@
+from datetime import timedelta
+
 from odoo import models, fields, api
-from datetime import timedelta  # Asegúrate de que esta línea esté correcta
 
-
-class GicPayment(models.Model):
-    _name = 'gic.payment'
-    _description = 'Cobro realizado en el punto de venta'
-
-    order_date = fields.Datetime(string='Fecha del Pedido')
-    pos_id = fields.Many2one('pos.session', string='POS')
-    order_id = fields.Many2one('pos.order', string='Pedido')
-    user_id = fields.Many2one('res.users', string='Usuario')
-    payment_method_id = fields.Many2one('pos.payment.method', string='Forma de Pago')
-    payment_plan_id = fields.Many2one('gic.payment.plan', string='Plan de Pago')
-    order_amount = fields.Float(string='Monto de la Orden')
-    cliente_id = fields.Many2one('res.partner', string='Cliente')
+class GicPosPayment(models.Model):
+    _inherit = 'pos.payment'
 
     state = fields.Selection(
         selection=[
@@ -31,35 +21,32 @@ class GicPayment(models.Model):
     submission_date = fields.Datetime(string='Fecha de Presentación', compute='_compute_submission_date', store=True)
     settlement_date = fields.Datetime(string='Fecha de Acreditación', compute='_compute_settlement_date', store=True)
 
-    @api.depends('order_date', 'submission_date', 'settlement_date')
+
+    @api.depends('create_date', 'submission_date', 'settlement_date')
     def _compute_state(self):
         for record in self:
             current_date = fields.Datetime.now()
 
-            if all([record.order_date, record.submission_date, record.settlement_date]):
+            if all([record.create_date, record.submission_date, record.settlement_date]):
                 if current_date.date() == record.settlement_date.date():
                     record.state = 'charged'
                 elif current_date.date() == record.submission_date.date():
                     record.state = 'checked'
-                elif current_date.date() == record.order_date.date():
+                elif current_date.date() == record.create_date.date():
                     record.state = 'new'
-                elif record.order_date < current_date < record.submission_date:
+                elif record.create_date < current_date < record.submission_date:
                     record.state = 'new'
-                elif record.order_date < current_date < record.settlement_date:
+                elif record.create_date < current_date < record.settlement_date:
                     record.state = 'checked'
                 elif current_date >= record.settlement_date:
                     record.state = 'charged'
             else:
                 record.state = 'new'  # Valor por defecto si faltan fechas
 
-    @api.depends('order_id', 'payment_method_id')
+    @api.depends('create_date', 'payment_method_id')
     def _compute_submission_date(self):
         for record in self:
-            if not record.order_id or not record.payment_method_id:
-                record.submission_date = False
-                continue
-
-            order_date = record.order_id.date_order
+            order_date = record.create_date
             payment_method = record.payment_method_id
             payment_plan = payment_method.payment_plan_id
 

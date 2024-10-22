@@ -10,6 +10,8 @@
                 <xpath expr="//field[@name='journal_id']" position="after">
                     <field name="way_id"/>
                     <field name="payment_plan_id"/>
+                    <field name="hide_use_payment_terminal"/>
+                    <field name="use_payment_terminal"/>
                 </xpath>
             </field>
         </record>

@@ -18,8 +18,8 @@
                 action="gic_payment_plan_action"
             />
             <menuitem
-                id="gic_payment_menu_action"
-                action="gic_payment_action"
+                id="gic_pos_payment_menu_action"
+                action="gic_pos_payment_action"
             />
         </menuitem>
     </menuitem>

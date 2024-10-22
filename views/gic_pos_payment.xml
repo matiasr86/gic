@@ -1,0 +1,21 @@
+<odoo>
+	<data>
+		<record id="gic_pos_payment_view_tree" model="ir.ui.view">
+            <field name="name">pos.payment.tree.inherited</field>
+            <field name="model">pos.payment</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_payment_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="create_uid"/>
+                </xpath>
+            </field>
+        </record>
+
+
+	    <record id="gic_pos_payment_action" model="ir.actions.act_window">
+	        <field name="name">Listado de Cobros</field>
+	        <field name="res_model">pos.payment</field>
+	        <field name="view_mode">tree,form,kanban</field>
+	    </record>
+	</data>
+</odoo>
