@@ -10,23 +10,26 @@
                     <field name="partner_id"/>
                     <field name="payment_method_id"/>
                     <field name="payment_plan"/>
+                    <field name="pricelist"/>
                 </xpath>
             </field>
         </record>
 
 		<record id="gic_pos_payment_view_tree_inherit" model="ir.ui.view">
-            <field name="name">pos.payment.tree.inherited</field>
+            <field name="name">gic.pos.payment.tree.inherited</field>
             <field name="model">pos.payment</field>
-            <field name="inherit_id" ref="point_of_sale.view_pos_payment_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='payment_date']" position="after">
+                <tree position="replace">
+                    <field name="create_date"/>
+                    <field name="state"/>
                     <field name="create_uid"/>
                     <field name="partner_id"/>
                     <field name="payment_plan"/>
+                    <field name="amount"/>
                     <field name="submission_date"/>
                     <field name="settlement_date"/>
-                    <field name="state"/>
-                </xpath>
+                    <field name="amount_to_collect"/>
+                </tree>
             </field>
         </record>
 

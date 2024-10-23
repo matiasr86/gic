@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class GicPosPayment(models.Model):
     _inherit = 'pos.payment'
 
+
     state = fields.Selection(
         selection=[
             ("new", "Ingresado"),
@@ -22,6 +23,10 @@ class GicPosPayment(models.Model):
     settlement_date = fields.Date(string='Fecha de Acreditación', compute='_compute_settlement_date', store=True)
     payment_plan_id = fields.Many2one('gic.payment.plan', string='Plan de Pago')
     payment_plan = fields.Many2one(related='payment_method_id.payment_plan_id', string='Plan de Pago', store=False)
+    pricelist_id = fields.Many2one('pos.session', string='Lista de precios')
+    pricelist = fields.Many2one(related='pos_order_id.pricelist_id', string='Lista de precios', store=False)
+    amount_to_collect = fields.Monetary(string="A Acreditar", currency_field='currency_id')
+    currency_id = fields.Many2one('res.currency', string='Currency')
 
     @api.depends('create_date', 'submission_date', 'settlement_date')
     def _compute_state(self):
