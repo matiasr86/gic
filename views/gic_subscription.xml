@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_gic_subscription_form" model="ir.ui.view">
+        <field name="model">gic.subscription</field>
+        <field name="arch" type="xml">
+            <form string="Planes de Suscripción">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="strategy"/>
+                        <field name="token_input" placeholder="Ingrese el token para modificar"
+                               attrs="{'invisible': [('id', '=', False)]}" />
+                    </group>
+
+                    <!-- Apartado informativo sobre el alcance de los planes -->
+                    <group>
+                        <separator string="Plan GIC: permite hasta 3 sesiones de punto de venta."/>
+                        <separator string="Plan GIC+: permite hasta 10 sesiones de punto de venta."/>
+                        <separator string="Plan GIC Premium: sin límite de sesiones de punto de venta."/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gic_subscription_action" model="ir.actions.act_window">
+        <field name="name">Suscripción</field>
+        <field name="res_model">gic.subscription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

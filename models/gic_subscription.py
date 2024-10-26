@@ -1,4 +1,9 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError, AccessError
+
+from odoo import models, fields, api
+from odoo.exceptions import UserError, AccessError
+
 
 class GicSubscription(models.Model):
     _name = 'gic.subscription'
@@ -11,13 +16,22 @@ class GicSubscription(models.Model):
         ('plan_gic_premium', 'Plan GIC Premium'),
     ], string="Estrategia de Plan", required=True)
 
-    def get_strategy(self):
-        strategies = {
-            'plan_gic': PlanGIC(),
-            'plan_gic_plus': PlanGICPlus(),
-            'plan_gic_premium': PlanGICPremium(),
-        }
-        return strategies.get(self.strategy)
+    token_input = fields.Char(string="Token de Seguridad", store=False)  # Campo temporal para el token
+
+    @api.model
+    def create(self, vals):
+        if self.search_count([]) > 0:
+            raise UserError("Solo se permite una única suscripción activa.")
+        return super(GicSubscription, self).create(vals)
+
+    def write(self, vals):
+        token_input = vals.get('token_input')
+        stored_token = self.env['ir.config_parameter'].sudo().get_param('gic.subscription.token')
+
+        if token_input != stored_token:
+            raise AccessError("Token inválido. No tienes permiso para modificar esta suscripción.")
+
+        return super(GicSubscription, self).write(vals)
 
 
 class SesionPlanStrategy:
@@ -38,3 +52,5 @@ class PlanGICPremium(SesionPlanStrategy):
     def validar_sesiones(self, sesiones_contadas):
         # Sin límite, se puede omitir la validación
         pass
+
+

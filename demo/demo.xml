@@ -99,4 +99,10 @@
               <field name="accreditation_destination">Mercado Pago</field>
           </record>
     </data>
+        <data noupdate="1">
+        <record id="gic_subscription_config_token" model="ir.config_parameter">
+            <field name="key">gic.subscription.token</field>
+            <field name="value">Mateo1179</field> <!-- Reemplaza con el token que deseas usar -->
+        </record>
+    </data>
 </odoo>

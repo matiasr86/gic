@@ -2,6 +2,10 @@
     <menuitem id="estate_menu_root" name="Gic" sequence="0">
         <menuitem id="gic_master_data_menu" name="Principal">
             <menuitem
+                id="gic_subscription_menu_action"
+                action="gic_subscription_action"
+            />
+            <menuitem
                 id="gic_way_menu_action"
                 action="gic_way_action"
             />

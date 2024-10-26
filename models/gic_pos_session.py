@@ -4,8 +4,9 @@ class GicPosSession(models.Model):
     _name = 'gic.pos.session'
     _description = 'Sesiones de Punto de Venta'
 
-    subscription_id = fields.Many2one('gic.subscription', string="Suscripción")
-    point_of_sale_id = fields.Many2one('pos.config', string="Punto de Venta")
+    # Campos
+    subscription_id = fields.Many2one('gic.subscription', string="Suscripción", required=True)
+    point_of_sale_id = fields.Many2one('pos.config', string="Punto de Venta", required=True)
 
     @api.model
     def create(self, vals):
@@ -20,7 +21,7 @@ class GicPosSession(models.Model):
 
             # Obtener la estrategia y validar el número de puntos de venta permitidos
             strategy = subscription.get_strategy()
-            strategy.validar_puntos_de_venta(active_pos_count)
+            strategy.validar_sesiones(active_pos_count)
 
         # Crear la sesión si la validación es exitosa
         return super(GicPosSession, self).create(vals)
