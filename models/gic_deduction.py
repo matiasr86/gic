@@ -25,10 +25,14 @@ class GicDeduction(models.Model):
     ], string='Tipo', required=True)
     iva = fields.Float(string='IVA')
 
-    @api.model
-    def calcular_deduccion(self):
-        # Implementar lógica para calcular la deducción de impuestos
-        pass
+    def calculate_deduction(self, original_amount):
+        if self.type == 'tax':
+            return original_amount * (self.percentage / 100)
+        elif self.type in ['tariff', 'quota']:
+            base_amount = original_amount * (self.percentage / 100)
+            iva_deduction = base_amount * (self.iva / 100)  # Supongamos 21% de IVA
+            return base_amount + iva_deduction
+        return 0.0
 
     @api.model
     def calcular_iva(self):

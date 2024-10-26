@@ -1,0 +1,7 @@
+"id","name","supplier","manual_finish_lot","state","next_number","accreditation_destination"
+"gic_way_1","Efectivo","","","active","0","Caja"
+"gic_way_2","Terminal 1 (Clover)","Fiserv","false","active","0","Banco Galicia"
+"gic_way_3","Terminal 2 (Getnet)","Santander","false","active","0","Banco Santander"
+"gic_way_4","Terminal 3 (Payway)","Payway","true","active","0","Banco Municipal"
+"gic_way_5","Transferencia MP","Mercado Pago","false","active","0","Mercado Pago"
+"gic_way_6","Qr MP","Mercado Pago","false","active","0","Mercado Pago"

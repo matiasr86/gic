@@ -18,4 +18,5 @@ class GicWay(models.Model):
         copy=False,
         default="active",
     )
+    accreditation_destination = fields.Char(string='Destino')
     next_number = fields.Integer(string='Próximo Nro')

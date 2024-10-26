@@ -40,6 +40,8 @@
         'views/gic_payment_method.xml',
         'views/gic_holiday.xml',
         'views/menu.xml',
+        #'data/gic.way.csv',
+        'demo/demo.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
