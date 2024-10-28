@@ -1,29 +1,49 @@
 <odoo>
-    <menuitem id="estate_menu_root" name="Gic" sequence="0">
-        <menuitem id="gic_master_data_menu" name="Principal">
+    <menuitem id="estate_menu_root" name="Gestor Integral de Cobros" sequence="0">
+        <!-- Primera sección: Cobros -->
+        <menuitem id="gic_collections_menu" name="Cobros" sequence="1">
             <menuitem
-                id="gic_subscription_menu_action"
-                action="gic_subscription_action"
+                id="gic_pos_payment_menu_action"
+                name="Listado de Cobros"
+                action="gic_pos_payment_action"
             />
+        </menuitem>
+
+        <!-- Segunda sección: Configuración Gic -->
+        <menuitem id="gic_configuration_menu" name="Configuración Gic" sequence="2">
             <menuitem
                 id="gic_way_menu_action"
+                name="Medios de Cobro"
                 action="gic_way_action"
             />
             <menuitem
+                id="gic_payment_plan_menu_action"
+                name="Plan de Cobro"
+                action="gic_payment_plan_action"
+            />
+            <menuitem
                 id="gic_deduction_menu_action"
+                name="Deducciones"
                 action="gic_deduction_action"
             />
             <menuitem
                 id="gic_holiday_menu_action"
+                name="Registro de Feriados"
                 action="gic_holiday_action"
             />
+        </menuitem>
+
+        <!-- Tercera sección: Suscripción -->
+        <menuitem id="gic_subscription_menu" name="Suscripción" sequence="3">
             <menuitem
-                id="gic_payment_plan_menu_action"
-                action="gic_payment_plan_action"
+                id="gic_subscription_menu_action"
+                name="Suscripción"
+                action="gic_subscription_action"
             />
             <menuitem
-                id="gic_pos_payment_menu_action"
-                action="gic_pos_payment_action"
+                id="gic_pos_menu_action"
+                name="Puntos de Venta GIC"
+                action="gic_pos_action"
             />
         </menuitem>
     </menuitem>

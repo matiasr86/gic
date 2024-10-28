@@ -4,5 +4,6 @@ access_gic_way,access_gic_way,model_gic_way,base.group_user,1,1,1,1
 access_gic_holiday,access_gic_holiday,model_gic_holiday,base.group_user,1,1,1,1
 access_gic_payment_plan,access_gic_payment_plan,model_gic_payment_plan,base.group_user,1,1,1,1
 access_gic_subscription,access_gic_subscription,model_gic_subscription,base.group_user,1,1,1,1
+access_gic_pos,access_gic_pos,model_gic_pos,base.group_user,1,1,1,1
 
 

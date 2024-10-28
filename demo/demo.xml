@@ -1,108 +1,113 @@
 <odoo>
-    <data>
-          <record id="gic_deduction_model_1" model="gic.deduction">
-              <field name="name">IIBB</field>
-              <field name="date">2024-10-23</field>
-              <field name="percentage">3.6</field>
-              <field name="state">active</field>
-              <field name="type">tax</field>
-          </record>
-          <record id="gic_deduction_model_2" model="gic.deduction">
-              <field name="name">Tarjeta de Crédito</field>
-              <field name="date">2024-10-23</field>
-              <field name="percentage">1.8</field>
-              <field name="state">active</field>
-              <field name="type">tariff</field>
-              <field name="iva">21</field>
-          </record>
-          <record id="gic_deduction_model_3" model="gic.deduction">
-              <field name="name">Tarjeta de Débito</field>
-              <field name="date">2024-10-23</field>
-              <field name="percentage">0.8</field>
-              <field name="state">active</field>
-              <field name="type">tariff</field>
-              <field name="iva">21</field>
-          </record>
-          <record id="gic_deduction_model_4" model="gic.deduction">
-              <field name="name">Cuota Simple 3</field>
-              <field name="date">2024-10-23</field>
-              <field name="percentage">6.03</field>
-              <field name="state">active</field>
-              <field name="type">quota</field>
-              <field name="iva">10.5</field>
-          </record>
+    <data noupdate="1">
+        <record id="gic_deduction_model_1" model="gic.deduction">
+            <field name="name">IIBB</field>
+            <field name="date">2024-10-23</field>
+            <field name="percentage">3.6</field>
+            <field name="state">active</field>
+            <field name="type">tax</field>
+        </record>
+        <record id="gic_deduction_model_2" model="gic.deduction">
+            <field name="name">Tarjeta de Crédito</field>
+            <field name="date">2024-10-23</field>
+            <field name="percentage">1.8</field>
+            <field name="state">active</field>
+            <field name="type">tariff</field>
+            <field name="iva">21</field>
+        </record>
+        <record id="gic_deduction_model_3" model="gic.deduction">
+            <field name="name">Tarjeta de Débito</field>
+            <field name="date">2024-10-23</field>
+            <field name="percentage">0.8</field>
+            <field name="state">active</field>
+            <field name="type">tariff</field>
+            <field name="iva">21</field>
+        </record>
+        <record id="gic_deduction_model_4" model="gic.deduction">
+            <field name="name">Cuota Simple 3</field>
+            <field name="date">2024-10-23</field>
+            <field name="percentage">6.03</field>
+            <field name="state">active</field>
+            <field name="type">quota</field>
+            <field name="iva">10.5</field>
+        </record>
 
-          <record id="gic_payment_plan_model_1" model="gic.payment.plan">
-              <field name="name">Efectivo</field>
-              <field name="settlement_period">0</field>
-          </record>
-          <record id="gic_payment_plan_model_2" model="gic.payment.plan">
-              <field name="name">Credito 1 Pago</field>
-              <field name="settlement_period">10</field>
-              <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_2')])]"/>
-          </record>
-          <record id="gic_payment_plan_model_3" model="gic.payment.plan">
-              <field name="name">Débito</field>
-              <field name="settlement_period">1</field>
-              <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_3')])]"/>
-          </record>
-          <record id="gic_payment_plan_model_4" model="gic.payment.plan">
-              <field name="name">Cuota Simple 3</field>
-              <field name="settlement_period">10</field>
-              <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_2'), ref('gic_deduction_model_4')])]"/>
-          </record>
+        <record id="gic_payment_plan_model_1" model="gic.payment.plan">
+            <field name="name">Efectivo</field>
+            <field name="settlement_period">0</field>
+        </record>
+        <record id="gic_payment_plan_model_2" model="gic.payment.plan">
+            <field name="name">Credito 1 Pago</field>
+            <field name="settlement_period">10</field>
+            <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_2')])]"/>
+        </record>
+        <record id="gic_payment_plan_model_3" model="gic.payment.plan">
+            <field name="name">Débito</field>
+            <field name="settlement_period">1</field>
+            <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_3')])]"/>
+        </record>
+        <record id="gic_payment_plan_model_4" model="gic.payment.plan">
+            <field name="name">Cuota Simple 3</field>
+            <field name="settlement_period">10</field>
+            <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_2'), ref('gic_deduction_model_4')])]"/>
+        </record>
 
-          <record id="gic_way_1" model="gic.way">
-              <field name="name">Efectivo</field>
-              <field name="state">active</field>
-              <field name="next_number">0</field>
-              <field name="accreditation_destination">Caja</field>
-          </record>
-          <record id="gic_way_2" model="gic.way">
-              <field name="name">Terminal 1 (Clover)</field>
-              <field name="supplier">Fiserv</field>
-              <field name="manual_finish_lot">false</field>
-              <field name="state">active</field>
-              <field name="next_number">1</field>
-              <field name="accreditation_destination">Banco Galicia</field>
-          </record>
-          <record id="gic_way_3" model="gic.way">
-              <field name="name">Terminal 2 (Getnet)</field>
-              <field name="supplier">Santander</field>
-              <field name="manual_finish_lot">false</field>
-              <field name="state">active</field>
-              <field name="next_number">1</field>
-              <field name="accreditation_destination">Banco Santander</field>
-          </record>
-          <record id="gic_way_4" model="gic.way">
-              <field name="name">Terminal 3 (Payway)</field>
-              <field name="supplier">Payway</field>
-              <field name="manual_finish_lot">false</field>
-              <field name="state">active</field>
-              <field name="next_number">1</field>
-              <field name="accreditation_destination">Banco Municipal</field>
-          </record>
-          <record id="gic_way_5" model="gic.way">
-              <field name="name">Transferencia MP</field>
-              <field name="supplier">Mercado Pago</field>
-              <field name="manual_finish_lot">false</field>
-              <field name="state">active</field>
-              <field name="next_number">0</field>
-              <field name="accreditation_destination">Mercado Pago</field>
-          </record>
-          <record id="gic_way_6" model="gic.way">
-              <field name="name">Qr MP</field>
-              <field name="supplier">Mercado Pago</field>
-              <field name="manual_finish_lot">false</field>
-              <field name="state">active</field>
-              <field name="next_number">0</field>
-              <field name="accreditation_destination">Mercado Pago</field>
-          </record>
-    </data>
-        <data noupdate="1">
+        <record id="gic_way_1" model="gic.way">
+            <field name="name">Efectivo</field>
+            <field name="state">active</field>
+            <field name="next_number">0</field>
+            <field name="accreditation_destination">Caja</field>
+        </record>
+        <record id="gic_way_2" model="gic.way">
+            <field name="name">Terminal 1 (Clover)</field>
+            <field name="supplier">Fiserv</field>
+            <field name="manual_finish_lot">false</field>
+            <field name="state">active</field>
+            <field name="next_number">1</field>
+            <field name="accreditation_destination">Banco Galicia</field>
+        </record>
+        <record id="gic_way_3" model="gic.way">
+            <field name="name">Terminal 2 (Getnet)</field>
+            <field name="supplier">Santander</field>
+            <field name="manual_finish_lot">false</field>
+            <field name="state">active</field>
+            <field name="next_number">1</field>
+            <field name="accreditation_destination">Banco Santander</field>
+        </record>
+        <record id="gic_way_4" model="gic.way">
+            <field name="name">Terminal 3 (Payway)</field>
+            <field name="supplier">Payway</field>
+            <field name="manual_finish_lot">false</field>
+            <field name="state">active</field>
+            <field name="next_number">1</field>
+            <field name="accreditation_destination">Banco Municipal</field>
+        </record>
+        <record id="gic_way_5" model="gic.way">
+            <field name="name">Transferencia MP</field>
+            <field name="supplier">Mercado Pago</field>
+            <field name="manual_finish_lot">false</field>
+            <field name="state">active</field>
+            <field name="next_number">0</field>
+            <field name="accreditation_destination">Mercado Pago</field>
+        </record>
+        <record id="gic_way_6" model="gic.way">
+            <field name="name">Qr MP</field>
+            <field name="supplier">Mercado Pago</field>
+            <field name="manual_finish_lot">false</field>
+            <field name="state">active</field>
+            <field name="next_number">0</field>
+            <field name="accreditation_destination">Mercado Pago</field>
+        </record>
+
         <record id="gic_subscription_config_token" model="ir.config_parameter">
             <field name="key">gic.subscription.token</field>
-            <field name="value">Mateo1179</field> <!-- Reemplaza con el token que deseas usar -->
+            <field name="value">Example</field> <!-- Reemplaza con el token que deseas usar -->
+        </record>
+
+        <record id="gic_subscription_example" model="gic.subscription">
+            <field name="name">Prueba Plan GIC</field>
+            <field name="strategy">plan_gic</field>
+            <field name="active" eval="True"/>
         </record>
     </data>
 </odoo>

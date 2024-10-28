@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import models, gic_way, gic_deduction, gic_holiday, gic_payment_method, gic_payment_plan, gic_pos_payment, gic_pos_session, gic_subscription
+from . import models, gic_way, gic_deduction, gic_holiday, gic_payment_method, gic_payment_plan, gic_pos_payment, gic_subscription, gic_pos

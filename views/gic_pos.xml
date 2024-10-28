@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vista Tree para GicPos -->
+    <record id="view_gic_pos_tree" model="ir.ui.view">
+        <field name="name">gic.pos.tree</field>
+        <field name="model">gic.pos</field>
+        <field name="arch" type="xml">
+            <tree string="Puntos de Venta GIC">
+                <field name="name"/>
+                <field name="subscription_id"/>
+                <field name="odoo_pos_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form para GicPos -->
+    <record id="view_gic_pos_form" model="ir.ui.view">
+        <field name="name">gic.pos.form</field>
+        <field name="model">gic.pos</field>
+        <field name="arch" type="xml">
+            <form string="Punto de Venta GIC">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="subscription_id"/>
+                        <field name="odoo_pos_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gic_pos_action" model="ir.actions.act_window">
+        <field name="name">Puntos de Venta Gic</field>
+        <field name="res_model">gic.pos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

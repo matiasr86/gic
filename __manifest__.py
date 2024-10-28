@@ -39,13 +39,10 @@
         'views/gic_payment_plan.xml',
         'views/gic_payment_method.xml',
         'views/gic_holiday.xml',
+        'views/gic_pos.xml',
         'views/gic_subscription.xml',
         'views/menu.xml',
         #'data/gic.way.csv',
-        'demo/demo.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
         'demo/demo.xml',
     ],
 }
