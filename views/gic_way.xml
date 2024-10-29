@@ -1,5 +1,6 @@
 <odoo>
 	<data>
+		<!-- Tree View for GicWay -->
 		<record id="gic_way_view_tree" model="ir.ui.view">
 		    <field name="name">Medios de Cobro</field>
 		    <field name="model">gic.way</field>
@@ -10,14 +11,36 @@
 					<field name="manual_finish_lot" />
                     <field name="state" />
 					<field name="next_number" />
+                    <field name="destination_id" /> <!-- Nuevo campo destino -->
 				</tree>
 		    </field>
 		</record>
 
+		<!-- Form View for GicWay -->
+		<record id="gic_way_view_form" model="ir.ui.view">
+			<field name="name">gic.way.form</field>
+			<field name="model">gic.way</field>
+			<field name="arch" type="xml">
+				<form string="Medio de Cobro">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="supplier" />
+							<field name="manual_finish_lot" />
+                            <field name="state" />
+							<field name="next_number" />
+                            <field name="destination_id" /> <!-- Nuevo campo destino -->
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+	    <!-- Action to Open GicWay Views -->
 	    <record id="gic_way_action" model="ir.actions.act_window">
 	        <field name="name">Medios de Cobro</field>
 	        <field name="res_model">gic.way</field>
-	        <field name="view_mode">tree,form,kanban</field>
+	        <field name="view_mode">tree,form</field>
 	    </record>
 	</data>
 </odoo>

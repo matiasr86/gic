@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record id="view_gic_dashboard_calendar" model="ir.ui.view">
+            <field name="name">gic.dashboard.calendar</field>
+            <field name="model">gic.dashboard</field>
+            <field name="arch" type="xml">
+                <calendar string="Dashboard" date_start="date">
+                    <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="gic_dashboard_action" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">gic.dashboard</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_gic_dashboard_calendar"/>
+        </record>
+
+    </data>
+</odoo>

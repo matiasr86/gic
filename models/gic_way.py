@@ -18,5 +18,5 @@ class GicWay(models.Model):
         copy=False,
         default="active",
     )
-    accreditation_destination = fields.Char(string='Destino')
+    destination_id = fields.Many2one('gic.destination', string='Destino', required=True)
     next_number = fields.Integer(string='Próximo Nro')

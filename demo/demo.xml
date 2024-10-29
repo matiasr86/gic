@@ -52,11 +52,53 @@
             <field name="deduction_ids" eval="[(6, 0, [ref('gic_deduction_model_1'), ref('gic_deduction_model_2'), ref('gic_deduction_model_4')])]"/>
         </record>
 
+            <!-- Opción de Caja -->
+        <record id="destination_cashbox" model="gic.destination">
+            <field name="name">Caja</field>
+            <field name="type">cashbox</field>
+        </record>
+
+        <!-- Bancos Populares -->
+        <record id="destination_banco_nacion" model="gic.destination">
+            <field name="name">Banco Nación</field>
+            <field name="type">bank</field>
+        </record>
+        <record id="destination_banco_santander" model="gic.destination">
+            <field name="name">Banco Santander</field>
+            <field name="type">bank</field>
+        </record>
+        <record id="destination_banco_galicia" model="gic.destination">
+            <field name="name">Banco Galicia</field>
+            <field name="type">bank</field>
+        </record>
+        <record id="destination_banco_bbva" model="gic.destination">
+            <field name="name">Banco BBVA</field>
+            <field name="type">bank</field>
+        </record>
+
+        <!-- Billeteras Virtuales Populares -->
+        <record id="destination_mercado_pago" model="gic.destination">
+            <field name="name">Mercado Pago</field>
+            <field name="type">wallet</field>
+        </record>
+        <record id="destination_uala" model="gic.destination">
+            <field name="name">Ualá</field>
+            <field name="type">wallet</field>
+        </record>
+        <record id="destination_naranja_x" model="gic.destination">
+            <field name="name">Naranja X</field>
+            <field name="type">wallet</field>
+        </record>
+        <record id="destination_modo" model="gic.destination">
+            <field name="name">Modo</field>
+            <field name="type">wallet</field>
+        </record>
+
         <record id="gic_way_1" model="gic.way">
             <field name="name">Efectivo</field>
             <field name="state">active</field>
             <field name="next_number">0</field>
-            <field name="accreditation_destination">Caja</field>
+            <field name="destination_id" ref="destination_cashbox"/>
         </record>
         <record id="gic_way_2" model="gic.way">
             <field name="name">Terminal 1 (Clover)</field>
@@ -64,7 +106,7 @@
             <field name="manual_finish_lot">false</field>
             <field name="state">active</field>
             <field name="next_number">1</field>
-            <field name="accreditation_destination">Banco Galicia</field>
+            <field name="destination_id" ref="destination_banco_galicia"/>
         </record>
         <record id="gic_way_3" model="gic.way">
             <field name="name">Terminal 2 (Getnet)</field>
@@ -72,7 +114,7 @@
             <field name="manual_finish_lot">false</field>
             <field name="state">active</field>
             <field name="next_number">1</field>
-            <field name="accreditation_destination">Banco Santander</field>
+            <field name="destination_id" ref="destination_banco_santander"/>
         </record>
         <record id="gic_way_4" model="gic.way">
             <field name="name">Terminal 3 (Payway)</field>
@@ -80,7 +122,7 @@
             <field name="manual_finish_lot">false</field>
             <field name="state">active</field>
             <field name="next_number">1</field>
-            <field name="accreditation_destination">Banco Municipal</field>
+            <field name="destination_id" ref="destination_banco_bbva"/>
         </record>
         <record id="gic_way_5" model="gic.way">
             <field name="name">Transferencia MP</field>
@@ -88,7 +130,7 @@
             <field name="manual_finish_lot">false</field>
             <field name="state">active</field>
             <field name="next_number">0</field>
-            <field name="accreditation_destination">Mercado Pago</field>
+            <field name="destination_id" ref="destination_mercado_pago"/>
         </record>
         <record id="gic_way_6" model="gic.way">
             <field name="name">Qr MP</field>
@@ -96,7 +138,7 @@
             <field name="manual_finish_lot">false</field>
             <field name="state">active</field>
             <field name="next_number">0</field>
-            <field name="accreditation_destination">Mercado Pago</field>
+            <field name="destination_id" ref="destination_mercado_pago"/>
         </record>
 
         <record id="gic_subscription_config_token" model="ir.config_parameter">

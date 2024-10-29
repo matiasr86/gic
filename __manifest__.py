@@ -41,6 +41,8 @@
         'views/gic_holiday.xml',
         'views/gic_pos.xml',
         'views/gic_subscription.xml',
+        'views/gic_destination.xml',
+        'views/gic_dashboard.xml',
         'views/menu.xml',
         #'data/gic.way.csv',
         'demo/demo.xml',

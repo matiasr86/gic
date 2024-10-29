@@ -1,7 +1,10 @@
 <odoo>
     <menuitem id="estate_menu_root" name="Gestor Integral de Cobros" sequence="0">
-        <!-- Primera sección: Cobros -->
-        <menuitem id="gic_collections_menu" name="Cobros" sequence="1">
+        <!-- Primera sección: Dashboard -->
+        <menuitem id="gic_dashboard_menu" name="Dashboard" sequence="1" action="gic_dashboard_action"/>
+
+        <!-- Segunda sección: Cobros -->
+        <menuitem id="gic_collections_menu" name="Cobros" sequence="2">
             <menuitem
                 id="gic_pos_payment_menu_action"
                 name="Listado de Cobros"
@@ -9,12 +12,17 @@
             />
         </menuitem>
 
-        <!-- Segunda sección: Configuración Gic -->
-        <menuitem id="gic_configuration_menu" name="Configuración Gic" sequence="2">
+        <!-- Tercera sección: Configuración Gic -->
+        <menuitem id="gic_configuration_menu" name="Configuración Gic" sequence="3">
             <menuitem
                 id="gic_way_menu_action"
                 name="Medios de Cobro"
                 action="gic_way_action"
+            />
+            <menuitem
+                id="gic_destination_menu_action"
+                name="Destino del Cobro"
+                action="gic_destination_action"
             />
             <menuitem
                 id="gic_payment_plan_menu_action"
@@ -33,8 +41,8 @@
             />
         </menuitem>
 
-        <!-- Tercera sección: Suscripción -->
-        <menuitem id="gic_subscription_menu" name="Suscripción" sequence="3">
+        <!-- Cuarta sección: Suscripción -->
+        <menuitem id="gic_subscription_menu" name="Suscripción" sequence="4">
             <menuitem
                 id="gic_subscription_menu_action"
                 name="Suscripción"

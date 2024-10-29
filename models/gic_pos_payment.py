@@ -5,6 +5,7 @@ class GicPosPayment(models.Model):
     _inherit = 'pos.payment'
 
     gic_pos_id = fields.Many2one('gic.pos', string='Punto de Venta GIC')
+    destination_id = fields.Many2one(related='payment_method_id.way_id.destination_id', string="Destino")
     pos_config_id = fields.Many2one(related='pos_order_id.config_id', string='Punto de Venta en Odoo', store=False)
     submission_date = fields.Datetime(string='Fecha de Presentación', compute='_compute_submission_date')
     settlement_date = fields.Datetime(string='Fecha de Acreditación', compute='_compute_settlement_date')
