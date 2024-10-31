@@ -1,35 +1,46 @@
 from odoo import models, fields, api
+from datetime import timedelta
 
-class GicDashboard(models.Model):
+class Dashboard(models.Model):
     _name = 'gic.dashboard'
-    _description = 'Dashboard de Cobros'
+    _description = 'GIC Dashboard - Summary of Upcoming Payments'
 
-    date = fields.Date(string='Fecha', required=True)
-    total_amount = fields.Monetary(string='Monto Total', currency_field='currency_id')
-    currency_id = fields.Many2one('res.currency', string='Moneda')
+    date = fields.Date(string="Fecha", compute="_compute_date", store=False)
+    amount = fields.Float(string="Monto a Cobrar", compute="_compute_total_amount", store=False)
+    previous_date = fields.Date(string="Fecha Anterior")  # Campo para almacenar la fecha del registro anterior
+
+    @api.depends('previous_date')
+    def _compute_date(self):
+        for idx, record in enumerate(self):
+            if idx == 0:  # Para el primer registro, usa la fecha actual
+                record.date = fields.Date.context_today(self)
+            else:
+                previous_record = self[idx - 1]
+                if previous_record.date:
+                    record.date = previous_record.date + timedelta(days=1)
+                    record.previous_date = previous_record.date
+
+    @api.depends('date')
+    def _compute_total_amount(self):
+        for record in self:
+            # Obtener fecha actual para comparar con cobros en estado 'charged'
+            today = fields.Date.context_today(self)
+
+            # Filtrar cobros en los estados 'new', 'checked', y 'charged' según los criterios
+            payment_on_date = self.env['gic.pos.payment'].search([
+                '|', '|',
+                ('state', '=', 'new'),
+                ('state', '=', 'checked'),
+                '&', ('state', '=', 'charged'), ('settlement_date', '=', today)
+            ])
+
+            # Sumar el monto de cobros que tienen la misma fecha de acreditación que 'record.fecha'
+            record.amount = sum(payment.amount_to_collect for payment in payment_on_date if payment.settlement_date == record.date)
 
     @api.model
-    def get_data(self):
-        # Limpiar datos existentes
-        existing_dashboards = self.search([])
-        existing_dashboards.unlink()
-
-        # Obtener todos los GicPosPayment
-        payments = self.env['gic.pos.payment'].search([])
-
-        # Agrupar los pagos por fecha de liquidación
-        amounts_by_date = {}
-        for payment in payments:
-            if payment.settlement_date:
-                date_key = payment.settlement_date.date()
-                if date_key not in amounts_by_date:
-                    amounts_by_date[date_key] = 0.0
-                amounts_by_date[date_key] += payment.amount_to_collect
-
-        # Crear registros en el modelo GicDashboard
-        for date_key, total in amounts_by_date.items():
-            self.create({
-                'date': date_key,
-                'total_amount': total,
-                'currency_id': payments[0].currency_id.id if payments else False,  # Asumir moneda del primer pago
-            })
+    def initialize_dashboard_entries(self):
+        # Si ya existen 30 registros en el modelo, no crear nuevos
+        if self.search_count([]) < 30:
+            # Crear 30 registros sin valores específicos, los campos se calculan dinámicamente
+            for _ in range(30):
+                self.create({})

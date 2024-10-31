@@ -151,5 +151,97 @@
             <field name="strategy">plan_gic</field>
             <field name="active" eval="True"/>
         </record>
+
+        <!-- Cargar 30 registros de Dashboard -->
+        <record id="dashboard_record_1" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_2" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_3" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_4" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_5" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_6" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_7" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_8" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_9" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_10" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_11" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_12" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_13" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_14" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_15" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_16" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_17" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_18" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_19" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_20" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_21" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_22" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_23" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_24" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_25" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_26" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_27" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_28" model="gic.dashboard">
+            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_29" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="dashboard_record_30" model="gic.dashboard">
+            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+        </record>
     </data>
 </odoo>

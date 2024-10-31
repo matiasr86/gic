@@ -1,21 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <!-- Vista Tree -->
+        <record id="view_gic_dashboard_tree" model="ir.ui.view">
+            <field name="name">gic.dashboard.tree</field>
+            <field name="model">gic.dashboard</field>
+            <field name="arch" type="xml">
+                <tree string="Dashboard">
+                    <field name="date"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Kanban -->
+        <record id="view_gic_dashboard_kanban" model="ir.ui.view">
+            <field name="name">gic.dashboard.kanban</field>
+            <field name="model">gic.dashboard</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="date"/></strong>
+                                </div>
+                                <div>
+                                    <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vista Calendar -->
         <record id="view_gic_dashboard_calendar" model="ir.ui.view">
             <field name="name">gic.dashboard.calendar</field>
             <field name="model">gic.dashboard</field>
             <field name="arch" type="xml">
-                <calendar string="Dashboard" date_start="date">
-                    <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <calendar string="Dashboard Calendar" date_start="date">
+                    <field name="amount"/>
                 </calendar>
             </field>
         </record>
 
+        <!-- Acción y menú -->
         <record id="gic_dashboard_action" model="ir.actions.act_window">
             <field name="name">Dashboard</field>
             <field name="res_model">gic.dashboard</field>
-            <field name="view_mode">calendar</field>
-            <field name="view_id" ref="view_gic_dashboard_calendar"/>
+            <field name="view_mode">tree,kanban,calendar</field>
         </record>
-
     </data>
 </odoo>
