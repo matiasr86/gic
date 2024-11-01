@@ -14,19 +14,28 @@
         </record>
 
         <!-- Vista Kanban -->
+
         <record id="view_gic_dashboard_kanban" model="ir.ui.view">
             <field name="name">gic.dashboard.kanban</field>
             <field name="model">gic.dashboard</field>
             <field name="arch" type="xml">
                 <kanban>
+                    <field name="date"/>
+                    <field name="amount"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click">
-                                <div class="o_kanban_record_title">
-                                    <strong><field name="date"/></strong>
-                                </div>
-                                <div>
-                                    <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <div class="o_kanban_record_box">
+                                <div class="oe_kanban_content">
+                                    <div class="o_kanban_record_title">
+                                        <h4>Fecha: </h4>
+                                        <span t-esc="record.date.value"/>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <strong>A Acreditar: $</strong>
+                                        <h3 style="color: #28a745; ">
+                                            <t t-esc="record.amount.value"/>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </t>
@@ -34,6 +43,12 @@
                 </kanban>
             </field>
         </record>
+
+
+
+
+
+
 
         <!-- Vista Calendar -->
         <record id="view_gic_dashboard_calendar" model="ir.ui.view">

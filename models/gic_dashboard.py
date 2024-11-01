@@ -5,6 +5,7 @@ class Dashboard(models.Model):
     _name = 'gic.dashboard'
     _description = 'GIC Dashboard - Summary of Upcoming Payments'
 
+    name = fields.Char(string='Nombre', required=True)
     date = fields.Date(string="Fecha", compute="_compute_date", store=False)
     amount = fields.Float(string="Monto a Cobrar", compute="_compute_total_amount", store=False)
     previous_date = fields.Date(string="Fecha Anterior")  # Campo para almacenar la fecha del registro anterior
@@ -27,7 +28,7 @@ class Dashboard(models.Model):
             today = fields.Date.context_today(self)
 
             # Filtrar cobros en los estados 'new', 'checked', y 'charged' según los criterios
-            payment_on_date = self.env['gic.pos.payment'].search([
+            payment_on_date = self.env['pos.payment'].search([
                 '|', '|',
                 ('state', '=', 'new'),
                 ('state', '=', 'checked'),
@@ -35,7 +36,11 @@ class Dashboard(models.Model):
             ])
 
             # Sumar el monto de cobros que tienen la misma fecha de acreditación que 'record.fecha'
-            record.amount = sum(payment.amount_to_collect for payment in payment_on_date if payment.settlement_date == record.date)
+            record.amount = sum(
+                payment.amount_to_collect
+                for payment in payment_on_date
+                if payment.settlement_date.date() == record.date
+            )
 
     @api.model
     def initialize_dashboard_entries(self):

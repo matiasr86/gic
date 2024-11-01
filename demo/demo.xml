@@ -154,94 +154,124 @@
 
         <!-- Cargar 30 registros de Dashboard -->
         <record id="dashboard_record_1" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 1</field>
         </record>
         <record id="dashboard_record_2" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 2</field>
         </record>
         <record id="dashboard_record_3" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 3</field>
         </record>
         <record id="dashboard_record_4" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 4</field>
         </record>
         <record id="dashboard_record_5" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 5</field>
         </record>
         <record id="dashboard_record_6" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 6</field>
         </record>
         <record id="dashboard_record_7" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 7</field>
         </record>
         <record id="dashboard_record_8" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 8</field>
         </record>
         <record id="dashboard_record_9" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 9</field>
         </record>
         <record id="dashboard_record_10" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 10</field>
         </record>
         <record id="dashboard_record_11" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 11</field>
         </record>
         <record id="dashboard_record_12" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 12</field>
         </record>
         <record id="dashboard_record_13" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 13</field>
         </record>
         <record id="dashboard_record_14" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 14</field>
         </record>
         <record id="dashboard_record_15" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 15</field>
         </record>
         <record id="dashboard_record_16" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 16</field>
         </record>
         <record id="dashboard_record_17" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 17</field>
         </record>
         <record id="dashboard_record_18" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 18</field>
         </record>
         <record id="dashboard_record_19" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 19</field>
         </record>
         <record id="dashboard_record_20" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 20</field>
         </record>
         <record id="dashboard_record_21" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 21</field>
         </record>
         <record id="dashboard_record_22" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 22</field>
         </record>
         <record id="dashboard_record_23" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 23</field>
         </record>
         <record id="dashboard_record_24" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 24</field>
         </record>
         <record id="dashboard_record_25" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 25</field>
         </record>
         <record id="dashboard_record_26" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 26</field>
         </record>
         <record id="dashboard_record_27" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 27</field>
         </record>
         <record id="dashboard_record_28" model="gic.dashboard">
-            <field name="date" eval="(context_today()).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 28</field>
         </record>
         <record id="dashboard_record_29" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 29</field>
         </record>
         <record id="dashboard_record_30" model="gic.dashboard">
-            <field name="date" eval="(context_today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date">2024-10-31</field>
+            <field name="name">Registro 30</field>
         </record>
     </data>
 </odoo>
