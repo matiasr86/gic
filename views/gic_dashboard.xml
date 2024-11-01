@@ -9,12 +9,12 @@
                 <tree string="Dashboard">
                     <field name="date"/>
                     <field name="amount"/>
+                    <field name="amount_by_destination"/>
                 </tree>
             </field>
         </record>
 
         <!-- Vista Kanban -->
-
         <record id="view_gic_dashboard_kanban" model="ir.ui.view">
             <field name="name">gic.dashboard.kanban</field>
             <field name="model">gic.dashboard</field>
@@ -32,7 +32,7 @@
                                     </div>
                                     <div style="margin-top: 10px;">
                                         <strong>A Acreditar: $</strong>
-                                        <h3 style="color: #28a745; ">
+                                        <h3 style="color: #28a745;">
                                             <t t-esc="record.amount.value"/>
                                         </h3>
                                     </div>
@@ -44,12 +44,6 @@
             </field>
         </record>
 
-
-
-
-
-
-
         <!-- Vista Calendar -->
         <record id="view_gic_dashboard_calendar" model="ir.ui.view">
             <field name="name">gic.dashboard.calendar</field>
@@ -57,6 +51,7 @@
             <field name="arch" type="xml">
                 <calendar string="Dashboard Calendar" date_start="date">
                     <field name="amount"/>
+                    <field name="amount_by_destination" widget="text"/>
                 </calendar>
             </field>
         </record>
