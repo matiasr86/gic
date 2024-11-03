@@ -22,6 +22,7 @@ class Dashboard(models.Model):
                     record.date = previous_record.date + timedelta(days=1)
                     record.previous_date = previous_record.date
 
+
     @api.depends('date')
     def _compute_total_amount(self):
         for record in self:
@@ -42,6 +43,8 @@ class Dashboard(models.Model):
                 for payment in payment_on_date
                 if payment.settlement_date.date() == record.date
             )
+            # Asignar al campo name de forma concatenada
+            record.name = f"A Acreditar ({record.amount})"
 
     @api.depends('date')
     def _compute_amount_by_destination(self):
@@ -51,10 +54,9 @@ class Dashboard(models.Model):
 
             # Verificamos que el registro tenga una fecha antes de proceder
             if record.date:
-                # Ejecutamos la búsqueda en pos.payment usando el contexto de la fecha actual del registro
+                # Ejecutamos la búsqueda en `gic.pos.payment` usando `settlement_date_only`
                 payments_on_date = self.env['pos.payment'].search([
-                    ('state', 'in', ['new', 'checked', 'charged']),
-                    ('settlement_date', '=', record.date)
+                    ('settlement_date_only', '=', record.date)
                 ])
 
                 # Procesamos los montos acumulados por destino en el diccionario de cada registro

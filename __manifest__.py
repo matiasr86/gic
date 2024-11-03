@@ -30,6 +30,7 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
@@ -43,6 +44,8 @@
         'views/gic_subscription.xml',
         'views/gic_destination.xml',
         'views/gic_dashboard.xml',
+        'views/gic_dashboard_payment.xml',
+        'views/gic_dashboard_plan.xml',
         'views/menu.xml',
         #'data/gic.way.csv',
         'demo/demo.xml',

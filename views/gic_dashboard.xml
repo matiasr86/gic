@@ -49,7 +49,7 @@
             <field name="name">gic.dashboard.calendar</field>
             <field name="model">gic.dashboard</field>
             <field name="arch" type="xml">
-                <calendar string="Dashboard Calendar" date_start="date">
+                <calendar string="Dashboard Calendar" date_start="date" mode="month">
                     <field name="amount"/>
                     <field name="amount_by_destination" widget="text"/>
                 </calendar>

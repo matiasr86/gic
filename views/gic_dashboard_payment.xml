@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="view_gic_dashboard_payment_form" model="ir.ui.view">
+            <field name="name">gic.dashboard.payment.form</field>
+            <field name="model">gic.dashboard.payment</field>
+            <field name="arch" type="xml">
+                <form string="Resumen de Cobros y Ventas del Mes">
+                    <sheet>
+                        <h3>Resumen Total de Cobros en un Periodo</h3>
+                        <group>
+                            <field name="month"/>
+                            <field name="year"/>
+                        </group>
+                        <hr/>
+                        <div class="container-fluid mb-3">
+                            <!-- Monto a cobrar -->
+                            <div class="alert alert-success text-center" style="font-size: 2.5rem; border-radius: 10px; padding: 20px;">
+                                <h1>Monto a Acreditar:</h1> $ <field name="total_to_collect"/>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row justify-content-center text-center">
+                            <!-- Monto total de venta -->
+                            <div class="col-md-6 mb-3">
+                                <div class="alert alert-info" style="font-size: 2rem; border-radius: 10px; padding: 20px;">
+                                    <h3>Monto Total Vendido:</h3> $ <field name="total_sales"/>
+                                </div>
+                            </div>
+
+                            <!-- Monto total a acreditar -->
+                            <div class="col-md-6 mb-3">
+                                <div class="alert alert-warning" style="font-size: 2rem; border-radius: 10px; padding: 20px;">
+                                    <h3>Monto Total Acreditable:</h3> $ <field name="total_to_accredit"/>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="gic_dashboard_payment_action" model="ir.actions.act_window">
+            <field name="name">Resumen de Cobros y Ventas</field>
+            <field name="res_model">gic.dashboard.payment</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+    </data>
+</odoo>

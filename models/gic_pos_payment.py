@@ -8,7 +8,8 @@ class GicPosPayment(models.Model):
     destination_id = fields.Many2one(related='payment_method_id.way_id.destination_id', string="Destino")
     pos_config_id = fields.Many2one(related='pos_order_id.config_id', string='Punto de Venta en Odoo', store=False)
     submission_date = fields.Datetime(string='Fecha de Presentación', compute='_compute_submission_date')
-    settlement_date = fields.Datetime(string='Fecha de Acreditación', compute='_compute_settlement_date')
+    settlement_date = fields.Datetime(string='Fecha de Acreditación',compute='_compute_settlement_date')
+    settlement_date_only = fields.Date(string='Fecha de Acreditación (Solo Fecha)',compute='_compute_settlement_date_only',store=True)
     payment_plan = fields.Many2one(related='payment_method_id.payment_plan_id', string='Plan de Pago', store=False)
     applied_deductions = fields.Many2many('gic.deduction', string='Deducciones Aplicadas')
     pricelist = fields.Many2one(related='pos_order_id.pricelist_id', string='Lista de precios', store=False)
@@ -157,6 +158,11 @@ class GicPosPayment(models.Model):
                     record.settlement_date = record.submission_date
                 else:
                     record.settlement_date = self._add_business_days(record.submission_date, settlement_period)
+
+    @api.depends('settlement_date')
+    def _compute_settlement_date_only(self):
+        for record in self:
+            record.settlement_date_only = record.settlement_date.date() if record.settlement_date else False
 
     def _add_business_days(self, start_date, days):
         current_date = start_date

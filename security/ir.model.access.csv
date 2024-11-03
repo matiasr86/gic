@@ -1,11 +1,25 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_gic_deduction,access_gic_deduction,model_gic_deduction,base.group_user,1,1,1,1
-access_gic_way,access_gic_way,model_gic_way,base.group_user,1,1,1,1
-access_gic_holiday,access_gic_holiday,model_gic_holiday,base.group_user,1,1,1,1
-access_gic_payment_plan,access_gic_payment_plan,model_gic_payment_plan,base.group_user,1,1,1,1
-access_gic_subscription,access_gic_subscription,model_gic_subscription,base.group_user,1,1,1,1
-access_gic_pos,access_gic_pos,model_gic_pos,base.group_user,1,1,1,1
-access_gic_destination,access_gic_destination,model_gic_destination,base.group_user,1,1,1,1
-access_gic_dashboard,access_gic_dashboard,model_gic_dashboard,base.group_user,1,1,1,1
+access_gic_deduction_admin,access_gic_deduction_admin,model_gic_deduction,base.group_system,1,1,1,1
+access_gic_deduction_user,access_gic_deduction_user,model_gic_deduction,group_common_user,1,0,0,0
+access_gic_way_admin,access_gic_way_admin,model_gic_way,base.group_system,1,1,1,1
+access_gic_way_user,access_gic_way_user,model_gic_way,group_common_user,1,0,0,0
+access_gic_holiday_admin,access_gic_holiday_admin,model_gic_holiday,base.group_system,1,1,1,1
+access_gic_holiday_user,access_gic_holiday_user,model_gic_holiday,group_common_user,1,0,0,0
+access_gic_payment_plan_admin,access_gic_payment_plan_admin,model_gic_payment_plan,base.group_system,1,1,1,1
+access_gic_payment_plan_user,access_gic_payment_plan_user,model_gic_payment_plan,group_common_user,1,0,0,0
+access_gic_subscription_admin,access_gic_subscription_admin,model_gic_subscription,base.group_system,1,1,1,1
+access_gic_subscription_user,access_gic_subscription_user,model_gic_subscription,group_common_user,1,0,0,0
+access_gic_pos_admin,access_gic_pos_admin,model_gic_pos,base.group_system,1,1,1,1
+access_gic_pos_user,access_gic_pos_user,model_gic_pos,group_common_user,1,0,0,0
+access_gic_destination_admin,access_gic_destination_admin,model_gic_destination,base.group_system,1,1,1,1
+access_gic_destination_user,access_gic_destination_user,model_gic_destination,group_common_user,1,0,0,0
+access_gic_dashboard_admin,access_gic_dashboard_admin,model_gic_dashboard,base.group_system,1,1,1,1
+access_gic_dashboard_user,access_gic_dashboard_user,model_gic_dashboard,group_common_user,1,0,0,0
+access_gic_dashboard_payment_admin,access_gic_dashboard_payment_admin,model_gic_dashboard_payment,base.group_system,1,1,1,1
+access_gic_dashboard_payment_user,access_gic_dashboard_payment_user,model_gic_dashboard_payment,group_common_user,1,0,0,0
+access_gic_dashboard_plan_admin,access_gic_dashboard_plan_admin,model_gic_dashboard_plan,base.group_system,1,1,1,1
+access_gic_dashboard_plan_user,access_gic_dashboard_plan_user,model_gic_dashboard_plan,group_common_user,1,0,0,0
+
+
 
 

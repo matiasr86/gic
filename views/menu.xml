@@ -1,14 +1,31 @@
 <odoo>
     <menuitem id="estate_menu_root" name="Gestor Integral de Cobros" sequence="0">
-        <!-- Primera sección: Dashboard -->
-        <menuitem id="gic_dashboard_menu" name="Dashboard" sequence="1" action="gic_dashboard_action"/>
 
-        <!-- Segunda sección: Cobros -->
-        <menuitem id="gic_collections_menu" name="Cobros" sequence="2">
+        <!-- Primera sección: Cobros -->
+        <menuitem id="gic_collections_menu" name="Cobros" sequence="1">
             <menuitem
                 id="gic_pos_payment_menu_action"
                 name="Listado de Cobros"
                 action="gic_pos_payment_action"
+            />
+        </menuitem>
+
+        <!-- Segunda sección: Dashboard -->
+        <menuitem id="gic_dashboard_menu" name="Dashboard" sequence="2">
+            <menuitem
+                id="gic_dashboard_menu_action"
+                name="Proyección de Cobros"
+                action="gic_dashboard_action"
+            />
+            <menuitem
+                id="gic_dashboard_payment_menu_action"
+                name="Resumen de Totales"
+                action="gic_dashboard_payment_action"
+            />
+            <menuitem
+                id="gic_dashboard_plan_menu_action"
+                name="Resumen Cobros por Plan"
+                action="gic_dashboard_plan_action"
             />
         </menuitem>
 
