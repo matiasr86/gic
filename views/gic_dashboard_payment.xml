@@ -35,6 +35,23 @@
                                 </div>
                             </div>
                         </div>
+                        <hr/>
+                        <h3>Detalle de Cobros por Día</h3>
+                        <group>
+                            <field name="selected_date"/>
+                        </group>
+                        <group>
+                            <field name="coupons">
+                                <tree>
+                                    <field name="create_date"/>
+                                    <field name="payment_plan"/>
+                                    <field name="amount"/>
+                                    <field name="amount_to_collect"/>
+                                    <field name="destination_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </group>
                     </sheet>
                 </form>
             </field>

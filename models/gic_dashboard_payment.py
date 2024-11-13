@@ -1,7 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
 
-
 class GicCobrosDashboard(models.Model):
     _name = 'gic.dashboard.payment'
     _description = 'Resumen de Cobros y Ventas del Mes Actual'
@@ -13,6 +12,8 @@ class GicCobrosDashboard(models.Model):
     total_to_collect = fields.Float(string="Monto Total a Cobrar", compute="_compute_totals", readonly=True)
     total_sales = fields.Float(string="Monto Total Vendido", compute="_compute_totals", readonly=True)
     total_to_accredit = fields.Float(string="Monto Total a Acreditar", compute="_compute_totals", readonly=True)
+    selected_date = fields.Date(string='Fecha Seleccionada', default=fields.Date.context_today)
+    coupons = fields.One2many('pos.payment', string='Cupones', compute='_compute_coupons')
 
     @api.depends('month', 'year')
     def _compute_totals(self):
@@ -46,9 +47,22 @@ class GicCobrosDashboard(models.Model):
             record.total_sales = total_sales
             record.total_to_accredit = total_accredit
 
+    @api.depends('selected_date')
+    def _compute_coupons(self):
+        for record in self:
+            if record.selected_date:
+                record.coupons = self.env['pos.payment'].search([
+                    ('state', '!=', 'cancelled'),
+                    ('settlement_date_only', '=', record.selected_date)
+                ])
+
     @api.model
-    def default_get(self, fields):
-        res = super(GicCobrosDashboard, self).default_get(fields)
-        res['month'] = str(datetime.now().month)
-        res['year'] = str(datetime.now().year)
+    def default_get(self, field_list):
+        res = super(GicCobrosDashboard, self).default_get(field_list)
+        if 'selected_date' in field_list:
+            res['selected_date'] = fields.Date.context_today(self)
+        if 'month' in field_list:
+            res['month'] = str(datetime.now().month)
+        if 'year' in field_list:
+            res['year'] = str(datetime.now().year)
         return res

@@ -14,8 +14,8 @@
     """,
 
     'author': "Matias Marinelli",
-    'website': "https://www.yourcompany.com",
-
+    'website': "https://www.devcode73.com.ar",
+    'icon_image': ['static/description/icon.png'],
     'installable': True,
     'application': True,  # Indica que es una aplicación
 

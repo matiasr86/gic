@@ -107,26 +107,25 @@ class GicPosPayment(models.Model):
     @api.depends('create_date', 'payment_method_id')
     def _compute_submission_date(self):
         for record in self:
-            if not record.has_gic_pos():
-                record.submission_date = record.create_date
-                continue
-            if not record.payment_plan:
+            if not record.has_gic_pos() or not record.payment_plan or record.payment_plan.settlement_period == 0:
+                # Si no tiene gic_pos, no tiene un plan de pago, o el plazo de acreditación es 0, la fecha de presentación es la fecha de venta
                 record.submission_date = record.create_date
                 continue
 
             # Convertir create_date a la zona horaria del usuario automáticamente
             order_date = fields.Datetime.context_timestamp(record, record.create_date)
+            gic_way = record.payment_method_id.way_id
 
-            if order_date.weekday() in (5, 6) or self._is_holiday(order_date):
-                # Si es fin de semana o feriado, buscar el siguiente día hábil
+            if gic_way.manual_finish_lot:
+                # Cierre de lote manual - siempre el próximo día hábil sin importar la hora del cobro
                 submission_date = self._get_next_business_day(order_date)
-            elif order_date.hour >= 17:
-                # Si la hora es posterior a las 17, ajustar al siguiente día hábil
-                next_day = order_date + timedelta(days=1)
-                submission_date = self._get_next_business_day(next_day)
             else:
-                # Si es un día hábil antes de las 17
-                submission_date = order_date
+                # Cierre de lote automático
+                if order_date.hour < 17:
+                    submission_date = order_date  # Mismo día si es antes de las 17
+                else:
+                    # Ajustar la fecha de presentación al siguiente día hábil
+                    submission_date = self._get_next_business_day(order_date)
 
             # Eliminar la zona horaria para que sea naive datetime
             record.submission_date = submission_date.replace(tzinfo=None)
