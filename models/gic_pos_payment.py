@@ -1,3 +1,4 @@
+import pytz
 from datetime import timedelta
 from odoo import models, fields, api
 
@@ -104,16 +105,19 @@ class GicPosPayment(models.Model):
             else:
                 record.state = 'new'  # Valor por defecto si faltan fechas
 
+
     @api.depends('create_date', 'payment_method_id')
     def _compute_submission_date(self):
+        argentina_tz = pytz.timezone('America/Argentina/Buenos_Aires')
+
         for record in self:
             if not record.has_gic_pos() or not record.payment_plan or record.payment_plan.settlement_period == 0:
                 # Si no tiene gic_pos, no tiene un plan de pago, o el plazo de acreditación es 0, la fecha de presentación es la fecha de venta
                 record.submission_date = record.create_date
                 continue
 
-            # Convertir create_date a la zona horaria del usuario automáticamente
-            order_date = fields.Datetime.context_timestamp(record, record.create_date)
+            # Convertir create_date a la zona horaria de Argentina
+            order_date = pytz.utc.localize(record.create_date).astimezone(argentina_tz)
             gic_way = record.payment_method_id.way_id
 
             if gic_way.manual_finish_lot:
