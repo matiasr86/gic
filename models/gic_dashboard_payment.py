@@ -40,7 +40,7 @@ class GicCobrosDashboard(models.Model):
             # Calculamos los totales
             total_collect = sum(payment.amount_to_collect for payment in payments_to_collect)
             total_sales = sum(payment.amount for payment in payments if payment.gic_pos_id)
-            total_accredit = sum(payment.amount_to_collect for payment in payments if payment.state in ["new", "checked"])
+            total_accredit = sum(payment.amount_to_collect for payment in payments)
 
             # Asignamos los valores calculados a los campos
             record.total_to_collect = total_collect
