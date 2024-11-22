@@ -3,7 +3,7 @@
     'name': "Gic",
 
     'summary': """
-        Aplicación para gestion la gestión de cobros en el POS""",
+        Aplicación para gestion de cobros en el POS""",
 
     'description': """
         Gic permite acceder a toda la informacion correspondiente a los cobros

@@ -17,7 +17,7 @@ class GicPosPayment(models.Model):
     amount_to_collect = fields.Monetary(string="A Acreditar", currency_field='currency_id', compute='_compute_amount_to_collect')
     currency_id = fields.Many2one('res.currency', string='Currency')
     coupon_number = fields.Integer(string='Cupón')
-
+    compute_state = fields.Char(string='Estado')
     state = fields.Selection(
         selection=[
             ("new", "Ingresado"),
@@ -28,7 +28,7 @@ class GicPosPayment(models.Model):
         ],
         string="Estado",
         compute='_compute_state',
-        store=True,
+        store=False,
         copy=False,
         default="new",
     )
@@ -83,27 +83,24 @@ class GicPosPayment(models.Model):
             # Verificamos si el registro tiene un gic_pos
             if not record.has_gic_pos():
                 record.state = 'excluded'
+                record.compute_state = 'excluded'
                 continue
 
             if not record.payment_plan:
                 continue  # Salta a la siguiente iteración
+
             current_date = fields.Datetime.now()
 
             if all([record.create_date, record.submission_date, record.settlement_date]):
-                if current_date.date() == record.settlement_date.date():
+                if current_date >= record.settlement_date:
                     record.state = 'charged'
-                elif current_date.date() == record.submission_date.date():
+                    record.compute_state = 'charged'
+                elif current_date >= record.submission_date:
                     record.state = 'checked'
-                elif current_date.date() == record.create_date.date():
+                    record.compute_state = 'checked'
+                elif current_date >= record.create_date:
                     record.state = 'new'
-                elif record.create_date < current_date < record.submission_date:
-                    record.state = 'new'
-                elif record.create_date < current_date < record.settlement_date:
-                    record.state = 'checked'
-                elif current_date >= record.settlement_date:
-                    record.state = 'charged'
-            else:
-                record.state = 'new'  # Valor por defecto si faltan fechas
+                    record.compute_state = 'new'
 
 
     @api.depends('create_date', 'payment_method_id')

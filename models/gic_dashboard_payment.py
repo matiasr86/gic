@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from pytz import timezone
 
 class GicCobrosDashboard(models.Model):
     _name = 'gic.dashboard.payment'
@@ -28,13 +29,19 @@ class GicCobrosDashboard(models.Model):
 
             # Filtramos los cobros y ventas dentro del período seleccionado
             payments = self.env['pos.payment'].search([
-                ('state', '!=', 'cancelled'),
+                ('state', '!=', 'excluded'),
                 ('create_date', '>=', start_date),
                 ('create_date', '<=', end_date)
             ])
-            # Filtramos los cobros a acreditar
+
+            # Obtener la fecha actual en la zona horaria de Buenos Aires
+            tz = timezone('America/Argentina/Buenos_Aires')
+            today_ba = datetime.now(tz).date()
+
+            # Filtrar los cobros a acreditar
             payments_to_collect = self.env['pos.payment'].search([
-                ('state', 'in', ['new', 'checked'])
+                ('compute_state', 'in', ['new', 'checked']),
+                ('settlement_date_only', '!=', today_ba)
             ])
 
             # Calculamos los totales
