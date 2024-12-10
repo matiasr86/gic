@@ -33,6 +33,22 @@ class GicPosPayment(models.Model):
         default="new",
     )
 
+
+    @api.model
+    def default_get(self, fields):
+        res = super().default_get(fields)
+        # Si el contexto contiene la clave 'update_state_on_view_load', ejecutamos el método
+        if self.env.context.get('update_state_on_view_load'):
+            self.update_state_on_view_load()
+        return res
+
+    @api.model
+    def update_state_on_view_load(self):
+        # Buscar registros con estado 'new' o 'checked'
+        records = self.search([('state', 'in', ['new', 'checked'])])
+        for record in records:
+            record._compute_state()
+
     # Verifica si el registro tiene un gic_pos asociado y si la suscripción está activa.
     def has_gic_pos(self):
         return bool(self.gic_pos_id) and self.gic_pos_id.subscription_id.active

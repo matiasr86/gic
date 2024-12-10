@@ -38,11 +38,15 @@
             </field>
         </record>
 
-
         <record id="gic_pos_payment_action" model="ir.actions.act_window">
             <field name="name">Listado de Cobros</field>
             <field name="res_model">pos.payment</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'update_state_on_view_load': True}</field>
         </record>
+
+
     </data>
+
+
 </odoo>
